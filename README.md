@@ -1,5 +1,7 @@
 # gogen
 
+[![Build Status](https://travis-ci.org/zzzpp/gogen.svg?branch=master)](https://travis-ci.org/zzzpp/gogen)
+
 bootstrap a .go file and pipe to stdout.
 
 
