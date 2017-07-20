@@ -9,7 +9,9 @@ import (
 
 var (
 	gen = kingpin.Command("gen", "create new go file.")
-	genImport =  gen.Arg("imp", "imported packages").Strings()
+	genPackage = gen.Flag("p", "package name").String()
+	genImport = gen.Flag("i", "import list ").Strings()
+	genCode = gen.Arg("code", "code line by line").Strings()
 )
 
 type Gocode struct {
@@ -61,9 +63,9 @@ func (gocode *Gocode) Gen() (codeStr string) {
 func main() {
 	switch kingpin.Parse() {
 	case "gen":
-		fmt.Println(*genImport)
+		if *genPackage == "" { *genPackage="main" }
 		gocode := Gocode{}
-		gocode.Form("main", *genImport, []string{"fmt.Println(0)"})
+		gocode.Form(*genPackage, *genImport, *genCode)
 		fmt.Println(gocode.Gen())
 	default:
 		panic("need 'new'")
