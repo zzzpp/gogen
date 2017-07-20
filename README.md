@@ -9,7 +9,7 @@ bootstrap a .go file and pipe to stdout.
 
 # Usage
 
-	$ gogen gen --i="fmt" --i="os"  a:=1 a+=1
+	$ gogen gen --i=fmt --i=os  a:=1 a+=1
 	
 outputs
 
